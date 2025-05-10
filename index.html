@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Latihan jQuery - [Nama Kamu]</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        background: #f0f0f0;
+      }
+      #profileBox,
+      #animateBox {
+        width: 100px;
+        height: 100px;
+        background: #4caf50;
+        margin: 20px 0;
+      }
+      #animateBox {
+        position: relative;
+        background: #2196f3;
+      }
+      #experiencePanel {
+        display: none;
+        background: #ddd;
+        padding: 20px;
+        margin-top: 10px;
+      }
+      button {
+        margin: 5px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        background: #333;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Portfolio Interaktif - Nadiva Mecca Rimanda</h1>
+
+    <!-- 1. Hide / Show -->
+    <section id="about">
+      <p>Halo! Saya Nadiva Mecca, ini adalah halaman latihan jQuery saya.</p>
+    </section>
+    <button id="hideAbout">Sembunyikan Tentang Saya</button>
+    <button id="showAbout">Tampilkan Tentang Saya</button>
+    <br /><br /><br />
+
+    <!-- 2. Fade -->
+    <div id="profileBox"></div>
+    <button id="fadeOutProfile">Fade Out Profil</button>
+    <button id="fadeInProfile">Fade In Profil</button>
+    <br /><br /><br />
+
+    <!-- 3. Slide -->
+    <div id="flipExp">Klik untuk lihat pengalaman</div>
+    <div id="experiencePanel">
+      <p>Saya sudah belajar HTML, CSS, dan sekarang jQuery!</p>
+    </div>
+    <button id="stopSlide">Stop Slide</button>
+    <br /><br /><br />
+
+    <!-- 4. Animate -->
+    <button id="startAnimate">Start Animasi Kotak</button>
+    <div id="animateBox"></div>
+    <br /><br /><br />
+
+    <!-- 5. Callback -->
+    <p id="callbackText">
+      Klik tombol ini untuk menyembunyikan saya pakai callback.
+    </p>
+    <button id="callbackBtn">Hide with Callback</button>
+    <br /><br /><br />
+
+    <!-- 6. Chaining -->
+    <p id="chainText">
+      Ini efek chaining: ganti warna, slideUp, lalu slideDown
+    </p>
+    <button id="chainBtn">Mulai Chaining</button>
+    <br /><br /><br />
+
+    <script>
+      $(document).ready(function () {
+        // 1. Hide and Show
+        $("#hideAbout").click(function () {
+          $("#about").hide();
+        });
+        $("#showAbout").click(function () {
+          $("#about").show();
+        });
+
+        // 2. Fade
+        $("#fadeOutProfile").click(function () {
+          $("#profileBox").fadeOut();
+        });
+        $("#fadeInProfile").click(function () {
+          $("#profileBox").fadeIn();
+        });
+
+        // 3. Slide + Stop
+        $("#flipExp").click(function () {
+          $("#experiencePanel").slideDown(3000);
+        });
+        $("#stopSlide").click(function () {
+          $("#experiencePanel").stop();
+        });
+
+        // 4. Animate
+        $("#startAnimate").click(function () {
+          $("#animateBox").animate({
+            left: "200px",
+            opacity: 0.5,
+            height: "150px",
+            width: "150px",
+          });
+        });
+
+        // 5. Callback
+        $("#callbackBtn").click(function () {
+          $("#callbackText").hide("slow", function () {
+            alert("Paragraf telah disembunyikan!");
+          });
+        });
+
+        // 6. Chaining
+        $("#chainBtn").click(function () {
+          $("#chainText").css("color", "red").slideUp(2000).slideDown(2000);
+        });
+      });
+    </script>
+  </body>
+</html>
